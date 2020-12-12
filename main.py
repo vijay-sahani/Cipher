@@ -43,8 +43,6 @@ def encrpyt(num):
         enc_text.append(text)
     return " ".join(enc_text)   
 
-print(ceasor_Cipher(input(">")))
-
 
 def decrypt_text(text,key):
     diCipher_text,text=[],text.lower().split(" ")
@@ -75,4 +73,7 @@ def decrypt_text(text,key):
     
     return " ".join(dec_text)
 
-print(decrypt_text(input(">"),key))
+if __name__ == "__main__":
+    a=ceasor_Cipher(input(">"))
+    print("Encrypted text is:",a)
+    print("Decrypted text is:",decrypt_text(a,key))
