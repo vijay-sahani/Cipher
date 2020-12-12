@@ -6,7 +6,7 @@ arr=[(index,item) for index,item in enumerate(letters)]
 key=randint(2,5)
 
 print(key)
-def ceasor_Cipher(text):
+def caeser_Cipher(text):
     '''
     Adding key into the text which will decide the encrption of your text
     '''
@@ -74,6 +74,6 @@ def decrypt_text(text,key):
     return " ".join(dec_text)
 
 if __name__ == "__main__":
-    a=ceasor_Cipher(input(">"))
+    a=caeser_Cipher(input(">"))
     print("Encrypted text is:",a)
     print("Decrypted text is:",decrypt_text(a,key))
