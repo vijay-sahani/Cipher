@@ -74,6 +74,7 @@ def decrypt_text(text,key):
     return " ".join(dec_text)
 
 if __name__ == "__main__":
-    a=caeser_Cipher(input(">"))
-    print("Encrypted text is:",a)
-    print("Decrypted text is:",decrypt_text(a,key))
+    while True:
+        a=caeser_Cipher(input(">"))
+        print("Encrypted text is:",a)
+        print("Decrypted text is:",decrypt_text(a,key))
