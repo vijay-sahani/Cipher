@@ -31,7 +31,7 @@ def encrpyt(num):
         corr=[]
         for j in i:
             if j>=26:
-                j=abs(25-j+1)
+                j=j%26
             corr.append(j)
         new.append(tuple(corr))
     for grp in new:
