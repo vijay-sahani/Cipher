@@ -1,77 +1,53 @@
 from random import randint
-
+'''
+Ceasor cipher also known as subsitutionn cipher was by julius cipher 
+First used in miltary affairs 
+The ceasor cipher involes replacing each letters of the alphabet with the letter standing down the alphabet
+'''
 
 letters=[chr(i) for i in range(97,123)]
-arr=[(index,item) for index,item in enumerate(letters)]
-key=randint(2,5)
+
+key=randint(3,6)
 
 print(key)
 def caeser_Cipher(text):
     '''
-    Adding key into the text which will decide the encrption of your text
+    Transforming the plaintext in cipher text
     '''
-    Cipher_text,text=[],text.lower().split(" ")
-    for i in text:
-        nums=[]
-        for j in i:
-            for pos,letter in arr:
-                if letter==j:
-                    nums.append(pos+key)
-        Cipher_text.append(nums)
-    return encrpyt(Cipher_text)
+    Cipher_text,text="",text.lower().strip()
 
+    for i in range(len(text)):
+        if text[i] in letters:
+            val=letters.index(text[i])+key
+            if val>=26:
+                val=val%26
+            Cipher_text+=letters[val]
+        elif text[i] in "@!*#$%&();\"'":
+            Cipher_text+=text[i]
+        else:
+            Cipher_text+=" "
+    return Cipher_text
 
-def encrpyt(num):
-    '''
-    Converting the numbers into encrypted text
-    '''
-    enc_text=[]
-    new=[]
-    for i in num:
-        corr=[]
-        for j in i:
-            if j>=26:
-                j=j%26
-            corr.append(j)
-        new.append(tuple(corr))
-    for grp in new:
-        text=""
-        for n in grp:
-            for index,item in arr:
-                if n==index:
-                    text+=item
-        enc_text.append(text)
-    return " ".join(enc_text)   
 
 
 def decrypt_text(text,key):
-    diCipher_text,text=[],text.lower().split(" ")
+    """
+    Recovering the cipher text to plaintext.
+    A key in required to dicipher text which was used the encrpyt the plaintext
+    """
+    diCipher_text,text="",text.lower()
+    for i in range(len(text)):
+        if text[i] in letters:
+            val=letters.index(text[i])-key
+            if val<0:
+                val=26+val
+            diCipher_text+=letters[val]
+        elif text[i] in "@!*#$%&();\"'":
+            diCipher_text+=text[i]
+        else:
+            diCipher_text+=" "
+    return diCipher_text.capitalize()
 
-    for i in text:
-        nums=[]
-        for j in i:
-            for pos,letter in arr:
-                if letter==j:
-                    nums.append(pos-key)
-        diCipher_text.append(nums)
-    new=[]
-    for ind in diCipher_text:
-        corr=[]
-        for i in ind:
-            if i<0:
-                i=26+i
-            corr.append(i)
-        new.append(corr)
-    dec_text=[]
-    for grp in new:
-        text=""
-        for n in grp:
-            for index,item in arr:
-                if n==index:
-                    text+=item
-        dec_text.append(text)
-    
-    return " ".join(dec_text)
 
 if __name__ == "__main__":
     while True:
